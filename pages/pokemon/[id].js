@@ -28,7 +28,9 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       pokemon: await resp.json()
-    }
+    },
+    //THROTTLE - Få nyt data når du bruger SSG - opdateres om 30 sekunder
+    revalidate: 30,
   }
 }
 export default function Details({ pokemon }) {
